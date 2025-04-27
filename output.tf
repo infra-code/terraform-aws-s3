@@ -6,10 +6,6 @@ output "arn" {
   value = aws_s3_bucket.bucket.arn
 }
 
-output "bucket_endpoint" {
-  value = aws_s3_bucket.bucket.website_endpoint != null ? aws_s3_bucket.bucket.website_endpoint : aws_s3_bucket.bucket.bucket_regional_domain_name
-}
-
 output "bucket_domain_name" {
   value = aws_s3_bucket.bucket.bucket_domain_name
 }
@@ -19,7 +15,7 @@ output "bucket_regional_domain_name" {
 }
 
 output "website_endpoint" {
-  value = aws_s3_bucket.bucket.website_endpoint
+  value = var.s3_website_enabled ? element(aws_s3_bucket_website_configuration.default, 0).website_endpoint : null
 }
 
 output "hosted_zone_id" {
