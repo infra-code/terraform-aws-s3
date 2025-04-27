@@ -5,12 +5,6 @@ resource "aws_s3_bucket" "bucket" {
   bucket = var.s3_bucket_name
 
   tags = local.tags
-
-  lifecycle {
-    ignore_changes = [
-      replication_configuration
-    ]
-  }
 }
 
 resource "aws_s3_bucket_logging" "logging" {
@@ -33,8 +27,7 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
   restrict_public_buckets = var.s3_public_access_block
 
   depends_on = [
-    aws_s3_bucket_policy.bucket,
-    aws_s3_bucket_replication_configuration.replication
+    aws_s3_bucket_policy.bucket
   ]
 }
 
