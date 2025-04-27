@@ -20,7 +20,7 @@ variable "s3_encryption_enabled" {
 
 variable "s3_logging_enabled" {
   type        = bool
-  default     = true
+  default     = false
   description = "Enable logging for s3 bucket"
 }
 
