@@ -10,6 +10,6 @@ resource "aws_s3_bucket_policy" "bucket" {
 
   depends_on = [
     var.s3_bucket_policy_cloudfront_identities,
-    aws_s3_bucket_public_access_block.bucket
+    aws_s3_bucket_public_access_block.bucket.id
   ]
 }
