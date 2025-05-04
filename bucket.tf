@@ -19,6 +19,8 @@ resource "aws_s3_bucket_logging" "logging" {
 
 
 resource "aws_s3_bucket_public_access_block" "bucket" {
+  count = var.s3_public_access_block ? 1 : 0
+  #checkov:skip=CKV_AWS_144: "We do not need to enforce cross-region replication especially inside a terraform module"
   bucket = aws_s3_bucket.bucket.id
 
   block_public_acls       = var.s3_public_access_block
