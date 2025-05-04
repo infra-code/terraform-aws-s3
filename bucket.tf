@@ -23,10 +23,6 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
   block_public_policy     = var.s3_public_access_block
   ignore_public_acls      = var.s3_public_access_block
   restrict_public_buckets = var.s3_public_access_block
-
-  depends_on = [
-    aws_s3_bucket_policy.bucket
-  ]
 }
 
 resource "aws_s3_bucket_ownership_controls" "bucket" {
